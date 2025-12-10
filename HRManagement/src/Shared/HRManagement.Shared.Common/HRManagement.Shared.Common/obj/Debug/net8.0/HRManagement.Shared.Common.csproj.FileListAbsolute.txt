@@ -1,0 +1,12 @@
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/bin/Debug/net8.0/HRManagement.Shared.Common.deps.json
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/bin/Debug/net8.0/HRManagement.Shared.Common.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/bin/Debug/net8.0/HRManagement.Shared.Common.pdb
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/obj/Debug/net8.0/HRManagement.Shared.Common.csproj.AssemblyReference.cache
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/obj/Debug/net8.0/HRManagement.Shared.Common.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/obj/Debug/net8.0/HRManagement.Shared.Common.AssemblyInfoInputs.cache
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/obj/Debug/net8.0/HRManagement.Shared.Common.AssemblyInfo.cs
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/obj/Debug/net8.0/HRManagement.Shared.Common.csproj.CoreCompileInputs.cache
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/obj/Debug/net8.0/HRManagement.Shared.Common.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/obj/Debug/net8.0/refint/HRManagement.Shared.Common.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/obj/Debug/net8.0/HRManagement.Shared.Common.pdb
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/obj/Debug/net8.0/ref/HRManagement.Shared.Common.dll

@@ -1,0 +1,12 @@
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/bin/Debug/net8.0/HRManagement.Shared.MessageBus.deps.json
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/bin/Debug/net8.0/HRManagement.Shared.MessageBus.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/bin/Debug/net8.0/HRManagement.Shared.MessageBus.pdb
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/HRManagement.Shared.MessageBus.csproj.AssemblyReference.cache
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/HRManagement.Shared.MessageBus.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/HRManagement.Shared.MessageBus.AssemblyInfoInputs.cache
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/HRManagement.Shared.MessageBus.AssemblyInfo.cs
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/HRManagement.Shared.MessageBus.csproj.CoreCompileInputs.cache
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/HRManagement.Shared.MessageBus.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/refint/HRManagement.Shared.MessageBus.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/HRManagement.Shared.MessageBus.pdb
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/ref/HRManagement.Shared.MessageBus.dll

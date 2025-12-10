@@ -1,0 +1,246 @@
+@employees_api = http://localhost:5001
+@payroll_api = http://localhost:5002
+@recruitment_api = http://localhost:5003
+
+### ================== EMPLOYEES API ==================
+
+### Проверка здоровья (Health Check)
+GET {{employees_api}}/health
+
+### Регистрация пользователя
+POST {{employees_api}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "admin@company.com",
+  "password": "Admin123!",
+  "firstName": "Admin",
+  "lastName": "User"
+}
+
+### Вход в систему
+# @name login
+POST {{employees_api}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@company.com",
+  "password": "Admin123!"
+}
+
+### Сохраняем токен
+@token = {{login.response.body.data.token}}
+
+### Создать отдел
+POST {{employees_api}}/api/departments
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "IT Department",
+  "description": "Information Technology"
+}
+
+### Получить список отделов
+GET {{employees_api}}/api/departments
+Authorization: Bearer {{token}}
+
+### Создать должность (нужен departmentId)
+POST {{employees_api}}/api/positions
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Software Developer",
+  "description": "Full-stack Developer",
+  "departmentId": "{{departmentId}}",
+  "minSalary": 50000,
+  "maxSalary": 100000
+}
+
+### Получить список должностей
+GET {{employees_api}}/api/positions
+Authorization: Bearer {{token}}
+
+### Создать сотрудника
+POST {{employees_api}}/api/employees
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "firstName": "Иван",
+  "lastName": "Петров",
+  "middleName": "Сергеевич",
+  "email": "ivan.petrov@company.com",
+  "phone": "+79001234567",
+  "dateOfBirth": "1990-01-15",
+  "address": "ул. Ленина, д. 1",
+  "departmentId": "{{departmentId}}",
+  "positionId": "{{positionId}}",
+  "hireDate": "2024-01-01"
+}
+
+### Получить список сотрудников
+GET {{employees_api}}/api/employees
+Authorization: Bearer {{token}}
+
+### Получить сотрудника по ID
+GET {{employees_api}}/api/employees/{{employeeId}}
+Authorization: Bearer {{token}}
+
+### ================== PAYROLL API ==================
+
+### Проверка здоровья (Health Check)
+GET {{payroll_api}}/health
+
+### Создать штатную единицу
+POST {{payroll_api}}/api/staffing
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "positionId": "{{positionId}}",
+  "departmentId": "{{departmentId}}",
+  "headcount": 5,
+  "baseSalary": 75000,
+  "effectiveDate": "2024-01-01"
+}
+
+### Получить штатное расписание
+GET {{payroll_api}}/api/staffing
+Authorization: Bearer {{token}}
+
+### Добавить запись в табель
+POST {{payroll_api}}/api/timesheet
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "employeeId": "{{employeeId}}",
+  "date": "2024-12-01",
+  "hoursWorked": 8,
+  "type": "Regular"
+}
+
+### Получить табель сотрудника
+GET {{payroll_api}}/api/timesheet/{{employeeId}}?month=12&year=2024
+Authorization: Bearer {{token}}
+
+### Рассчитать зарплату
+POST {{payroll_api}}/api/salary/calculate
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "employeeId": "{{employeeId}}",
+  "month": 12,
+  "year": 2024
+}
+
+### Получить расчеты зарплаты сотрудника
+GET {{payroll_api}}/api/salary/{{employeeId}}
+Authorization: Bearer {{token}}
+
+### ================== RECRUITMENT API ==================
+
+### Проверка здоровья (Health Check)
+GET {{recruitment_api}}/health
+
+### Создать вакансию
+POST {{recruitment_api}}/api/vacancies
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Senior .NET Developer",
+  "description": "Ищем опытного .NET разработчика",
+  "departmentId": "{{departmentId}}",
+  "positionId": "{{positionId}}",
+  "salaryMin": 150000,
+  "salaryMax": 250000,
+  "requirements": "5+ лет опыта, C#, ASP.NET Core, SQL",
+  "deadline": "2025-03-01"
+}
+
+### Получить все вакансии
+GET {{recruitment_api}}/api/vacancies
+Authorization: Bearer {{token}}
+
+### Получить открытые вакансии (без авторизации)
+GET {{recruitment_api}}/api/vacancies/open
+
+### Добавить кандидата
+POST {{recruitment_api}}/api/candidates
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "firstName": "Алексей",
+  "lastName": "Сидоров",
+  "email": "alexey.sidorov@gmail.com",
+  "phone": "+79009876543",
+  "resumeUrl": "https://example.com/resume.pdf",
+  "coverLetter": "Хочу работать в вашей компании",
+  "yearsOfExperience": 5,
+  "education": "МГТУ им. Баумана, Информатика",
+  "skills": "C#, .NET, SQL, Docker",
+  "vacancyId": "{{vacancyId}}"
+}
+
+### Получить всех кандидатов
+GET {{recruitment_api}}/api/candidates
+Authorization: Bearer {{token}}
+
+### Назначить собеседование
+POST {{recruitment_api}}/api/interviews
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "candidateId": "{{candidateId}}",
+  "scheduledDate": "2024-12-15T10:00:00Z",
+  "interviewerName": "HR Manager",
+  "notes": "Первичное собеседование"
+}
+
+### Получить все собеседования
+GET {{recruitment_api}}/api/interviews
+Authorization: Bearer {{token}}
+
+### Получить собеседования кандидата
+GET {{recruitment_api}}/api/interviews/candidate/{{candidateId}}
+Authorization: Bearer {{token}}
+
+### Принять кандидата на работу
+POST {{recruitment_api}}/api/candidates/{{candidateId}}/hire?departmentId={{departmentId}}&positionId={{positionId}}
+Authorization: Bearer {{token}}
+
+### Создать обучение
+POST {{recruitment_api}}/api/trainings
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "ASP.NET Core для начинающих",
+  "description": "Введение в разработку на ASP.NET Core",
+  "type": "Technical",
+  "startDate": "2025-01-15T09:00:00Z",
+  "endDate": "2025-01-17T18:00:00Z",
+  "durationHours": 24,
+  "provider": "Internal",
+  "location": "Офис, конференц-зал",
+  "cost": 0,
+  "maxParticipants": 20
+}
+
+### Получить все обучения
+GET {{recruitment_api}}/api/trainings
+Authorization: Bearer {{token}}
+
+### Добавить участника на обучение
+POST {{recruitment_api}}/api/trainings/{{trainingId}}/participants?employeeId={{employeeId}}
+Authorization: Bearer {{token}}
+
+### Получить предстоящие обучения
+GET {{recruitment_api}}/api/trainings/upcoming
+Authorization: Bearer {{token}}

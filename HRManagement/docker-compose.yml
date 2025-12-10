@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+  employees-api:
+    build:
+      context: .
+      dockerfile: src/Services/Employees/HRManagement.Employees.Api/Dockerfile
+    container_name: hr-employees-api
+    ports:
+      - "5001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/employees.db
+      - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
+      - JwtSettings__Issuer=HRManagement
+      - JwtSettings__Audience=HRManagement
+    volumes:
+      - employees-data:/app/data
+    networks:
+      - hr-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  payroll-api:
+    build:
+      context: .
+      dockerfile: src/Services/Payroll/HRManagement.Payroll.Api/Dockerfile
+    container_name: hr-payroll-api
+    ports:
+      - "5002:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/payroll.db
+      - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
+      - JwtSettings__Issuer=HRManagement
+      - JwtSettings__Audience=HRManagement
+    volumes:
+      - payroll-data:/app/data
+    networks:
+      - hr-network
+    depends_on:
+      - employees-api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  recruitment-api:
+    build:
+      context: .
+      dockerfile: src/Services/Recruitment/HRManagement.Recruitment.Api/Dockerfile
+    container_name: hr-recruitment-api
+    ports:
+      - "5003:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/recruitment.db
+      - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
+      - JwtSettings__Issuer=HRManagement
+      - JwtSettings__Audience=HRManagement
+    volumes:
+      - recruitment-data:/app/data
+    networks:
+      - hr-network
+    depends_on:
+      - employees-api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  hr-network:
+    driver: bridge
+
+volumes:
+  employees-data:
+  payroll-data:
+  recruitment-data:

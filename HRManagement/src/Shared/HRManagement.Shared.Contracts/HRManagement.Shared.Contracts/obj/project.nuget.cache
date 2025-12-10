@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "g5RA3YdVhX8=",
+  "success": true,
+  "projectFilePath": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts.csproj",
+  "expectedPackageFiles": [
+    "/root/.nuget/packages/microsoft.netcore.app.ref/8.0.22/microsoft.netcore.app.ref.8.0.22.nupkg.sha512",
+    "/root/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.22/microsoft.aspnetcore.app.ref.8.0.22.nupkg.sha512"
+  ],
+  "logs": []
+}

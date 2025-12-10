@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Services/" />
+  <Folder Name="/src/Services/Employees/">
+    <Project Path="src/Services/Employees/HRManagement.Employees.Api/HRManagement.Employees.Api.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/Payroll/">
+    <Project Path="src/Services/Payroll/HRManagement.Payroll.Api/HRManagement.Payroll.Api.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/Recruitment/">
+    <Project Path="src/Services/Recruitment/HRManagement.Recruitment.Api/HRManagement.Recruitment.Api.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/" />
+  <Folder Name="/src/Shared/HRManagement.Shared.Common/">
+    <Project Path="src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/HRManagement.Shared.Common.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/HRManagement.Shared.Contracts/">
+    <Project Path="src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/HRManagement.Shared.MessageBus/">
+    <Project Path="src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus.csproj" />
+  </Folder>
+</Solution>

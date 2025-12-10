@@ -1,0 +1,22 @@
+# Игнорировать бинарные и объектные файлы
+**/bin/
+**/obj/
+
+# Игнорировать NuGet пакеты
+**/packages/
+
+# Игнорировать файлы базы данных SQLite
+*.db
+*.db-journal
+
+# Игнорировать IDE файлы
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Игнорировать publish output
+**/publish/
+
+# Игнорировать TestResults
+**/TestResults/

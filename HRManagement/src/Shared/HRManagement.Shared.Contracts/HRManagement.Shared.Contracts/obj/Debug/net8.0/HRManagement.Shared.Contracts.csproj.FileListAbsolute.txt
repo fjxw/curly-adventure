@@ -1,0 +1,11 @@
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/bin/Debug/net8.0/HRManagement.Shared.Contracts.deps.json
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/bin/Debug/net8.0/HRManagement.Shared.Contracts.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/bin/Debug/net8.0/HRManagement.Shared.Contracts.pdb
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/obj/Debug/net8.0/HRManagement.Shared.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/obj/Debug/net8.0/HRManagement.Shared.Contracts.AssemblyInfoInputs.cache
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/obj/Debug/net8.0/HRManagement.Shared.Contracts.AssemblyInfo.cs
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/obj/Debug/net8.0/HRManagement.Shared.Contracts.csproj.CoreCompileInputs.cache
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/obj/Debug/net8.0/HRManagement.Shared.Contracts.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/obj/Debug/net8.0/refint/HRManagement.Shared.Contracts.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/obj/Debug/net8.0/HRManagement.Shared.Contracts.pdb
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/obj/Debug/net8.0/ref/HRManagement.Shared.Contracts.dll
