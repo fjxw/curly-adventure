@@ -38,3 +38,6 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.Run();
+
+// Make Program accessible for integration tests
+public partial class Program { }

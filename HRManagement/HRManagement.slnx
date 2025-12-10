@@ -20,4 +20,7 @@
   <Folder Name="/src/Shared/HRManagement.Shared.MessageBus/">
     <Project Path="src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/HRManagement.Tests/HRManagement.Tests.csproj" />
+  </Folder>
 </Solution>

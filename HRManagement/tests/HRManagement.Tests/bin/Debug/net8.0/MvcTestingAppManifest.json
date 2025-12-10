@@ -1,0 +1,8 @@
+{
+  "HRManagement.Employees.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/workspaces\/dotnet-codespaces\/HRManagement\/src\/Services\/Employees\/HRManagement.Employees.Api",
+  "HRManagement.Payroll.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/workspaces\/dotnet-codespaces\/HRManagement\/src\/Services\/Payroll\/HRManagement.Payroll.Api",
+  "HRManagement.Recruitment.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/workspaces\/dotnet-codespaces\/HRManagement\/src\/Services\/Recruitment\/HRManagement.Recruitment.Api",
+  "HRManagement.Shared.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/workspaces\/dotnet-codespaces\/HRManagement\/src\/Shared\/HRManagement.Shared.Common\/HRManagement.Shared.Common",
+  "HRManagement.Shared.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/workspaces\/dotnet-codespaces\/HRManagement\/src\/Shared\/HRManagement.Shared.Contracts\/HRManagement.Shared.Contracts",
+  "HRManagement.Shared.MessageBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/workspaces\/dotnet-codespaces\/HRManagement\/src\/Shared\/HRManagement.Shared.MessageBus\/HRManagement.Shared.MessageBus"
+}
