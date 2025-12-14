@@ -8,7 +8,7 @@ public static class TimeSheetEndpoints
     public static IEndpointRouteBuilder MapTimeSheetEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/timesheets")
-            .WithTags("TimeSheets")
+            .WithTags("Табель рабочего времени")
             .WithOpenApi()
             .RequireAuthorization();
 

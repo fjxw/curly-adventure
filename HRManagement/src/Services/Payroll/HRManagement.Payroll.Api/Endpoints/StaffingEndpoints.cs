@@ -8,7 +8,7 @@ public static class StaffingEndpoints
     public static IEndpointRouteBuilder MapStaffingEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/staffing")
-            .WithTags("Staffing")
+            .WithTags("Штатное расписание")
             .WithOpenApi()
             .RequireAuthorization();
 

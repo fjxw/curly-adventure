@@ -8,7 +8,7 @@ public static class TrainingEndpoints
     public static IEndpointRouteBuilder MapTrainingEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/trainings")
-            .WithTags("Trainings")
+            .WithTags("Обучение")
             .WithOpenApi()
             .RequireAuthorization();
 

@@ -8,7 +8,7 @@ public static class VacancyEndpoints
     public static IEndpointRouteBuilder MapVacancyEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/vacancies")
-            .WithTags("Vacancies")
+            .WithTags("Вакансии")
             .WithOpenApi()
             .RequireAuthorization();
 

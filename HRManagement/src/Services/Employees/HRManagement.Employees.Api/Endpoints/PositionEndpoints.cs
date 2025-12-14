@@ -8,7 +8,7 @@ public static class PositionEndpoints
     public static IEndpointRouteBuilder MapPositionEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/positions")
-            .WithTags("Positions")
+            .WithTags("Должности")
             .WithOpenApi()
             .RequireAuthorization();
 

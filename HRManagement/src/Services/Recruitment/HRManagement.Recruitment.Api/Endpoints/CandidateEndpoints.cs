@@ -8,7 +8,7 @@ public static class CandidateEndpoints
     public static IEndpointRouteBuilder MapCandidateEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/candidates")
-            .WithTags("Candidates")
+            .WithTags("Кандидаты")
             .WithOpenApi()
             .RequireAuthorization();
 

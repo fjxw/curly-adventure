@@ -8,7 +8,7 @@ public static class EmployeeEndpoints
     public static IEndpointRouteBuilder MapEmployeeEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/employees")
-            .WithTags("Employees")
+            .WithTags("Сотрудники")
             .WithOpenApi()
             .RequireAuthorization();
 

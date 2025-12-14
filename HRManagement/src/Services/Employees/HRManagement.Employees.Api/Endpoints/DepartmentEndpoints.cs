@@ -8,7 +8,7 @@ public static class DepartmentEndpoints
     public static IEndpointRouteBuilder MapDepartmentEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/departments")
-            .WithTags("Departments")
+            .WithTags("Отделы")
             .WithOpenApi()
             .RequireAuthorization();
 

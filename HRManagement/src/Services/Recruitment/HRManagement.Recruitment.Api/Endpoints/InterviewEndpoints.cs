@@ -8,7 +8,7 @@ public static class InterviewEndpoints
     public static IEndpointRouteBuilder MapInterviewEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/interviews")
-            .WithTags("Interviews")
+            .WithTags("Собеседования")
             .WithOpenApi()
             .RequireAuthorization();
 

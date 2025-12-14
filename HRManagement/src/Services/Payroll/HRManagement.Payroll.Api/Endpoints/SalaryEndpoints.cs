@@ -8,7 +8,7 @@ public static class SalaryEndpoints
     public static IEndpointRouteBuilder MapSalaryEndpoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/salary")
-            .WithTags("Salary")
+            .WithTags("Заработная плата")
             .WithOpenApi()
             .RequireAuthorization();
 
