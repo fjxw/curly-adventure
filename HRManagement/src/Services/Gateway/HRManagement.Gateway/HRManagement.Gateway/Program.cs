@@ -40,9 +40,9 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gateway API v1");
-    c.SwaggerEndpoint("/swagger/employees/swagger.json", "Employees API");
-    c.SwaggerEndpoint("/swagger/payroll/swagger.json", "Payroll API");
-    c.SwaggerEndpoint("/swagger/recruitment/swagger.json", "Recruitment API");
+    c.SwaggerEndpoint("/api-docs/employees/swagger.json", "Employees API");
+    c.SwaggerEndpoint("/api-docs/payroll/swagger.json", "Payroll API");
+    c.SwaggerEndpoint("/api-docs/recruitment/swagger.json", "Recruitment API");
     c.RoutePrefix = string.Empty;
     c.DocumentTitle = "HR Management - API Gateway";
 });
@@ -54,7 +54,7 @@ app.MapGet("/health", () => Results.Ok(new { Status = "Healthy", Service = "Gate
     .WithTags("Health");
 
 // Proxy swagger endpoints from microservices
-app.MapGet("/swagger/{service}/swagger.json", async (string service, IHttpClientFactory httpClientFactory, IConfiguration config) =>
+app.MapGet("/api-docs/{service}/swagger.json", async (string service, IHttpClientFactory httpClientFactory, IConfiguration config) =>
 {
     var endpoints = config.GetSection("ServiceEndpoints").Get<ServiceEndpoints>();
     var serviceUrl = service.ToLower() switch
