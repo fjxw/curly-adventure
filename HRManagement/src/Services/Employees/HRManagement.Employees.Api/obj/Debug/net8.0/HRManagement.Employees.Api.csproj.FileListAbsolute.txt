@@ -78,3 +78,4 @@
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Employees/HRManagement.Employees.Api/obj/Debug/net8.0/HRManagement.Employees.Api.pdb
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Employees/HRManagement.Employees.Api/obj/Debug/net8.0/HRManagement.Employees.Api.genruntimeconfig.cache
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Employees/HRManagement.Employees.Api/obj/Debug/net8.0/ref/HRManagement.Employees.Api.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Employees/HRManagement.Employees.Api/bin/Debug/net8.0/RabbitMQ.Client.dll

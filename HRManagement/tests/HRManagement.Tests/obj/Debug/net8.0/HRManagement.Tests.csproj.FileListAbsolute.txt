@@ -478,3 +478,4 @@
 /workspaces/dotnet-codespaces/HRManagement/tests/HRManagement.Tests/obj/Debug/net8.0/HRManagement.Tests.genruntimeconfig.cache
 /workspaces/dotnet-codespaces/HRManagement/tests/HRManagement.Tests/obj/Debug/net8.0/ref/HRManagement.Tests.dll
 /workspaces/dotnet-codespaces/HRManagement/tests/HRManagement.Tests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll
+/workspaces/dotnet-codespaces/HRManagement/tests/HRManagement.Tests/bin/Debug/net8.0/RabbitMQ.Client.dll

@@ -77,3 +77,4 @@
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Payroll/HRManagement.Payroll.Api/obj/Debug/net8.0/HRManagement.Payroll.Api.pdb
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Payroll/HRManagement.Payroll.Api/obj/Debug/net8.0/HRManagement.Payroll.Api.genruntimeconfig.cache
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Payroll/HRManagement.Payroll.Api/obj/Debug/net8.0/ref/HRManagement.Payroll.Api.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Payroll/HRManagement.Payroll.Api/bin/Debug/net8.0/RabbitMQ.Client.dll

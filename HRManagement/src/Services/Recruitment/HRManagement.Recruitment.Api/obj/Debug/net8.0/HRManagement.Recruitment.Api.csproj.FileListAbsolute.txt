@@ -143,3 +143,4 @@
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Recruitment/HRManagement.Recruitment.Api/obj/Debug/net8.0/HRManagement.Recruitment.Api.pdb
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Recruitment/HRManagement.Recruitment.Api/obj/Debug/net8.0/HRManagement.Recruitment.Api.genruntimeconfig.cache
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Recruitment/HRManagement.Recruitment.Api/obj/Debug/net8.0/ref/HRManagement.Recruitment.Api.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Recruitment/HRManagement.Recruitment.Api/bin/Debug/net8.0/RabbitMQ.Client.dll

@@ -1,9 +1,12 @@
 using System.Text;
+using HRManagement.Employees.Api.Application.EventHandlers;
 using HRManagement.Employees.Api.Application.Services;
 using HRManagement.Employees.Api.Domain.Entities;
 using HRManagement.Employees.Api.Infrastructure.Data;
+using HRManagement.Employees.Api.Infrastructure.EventSubscription;
 using HRManagement.Employees.Api.Infrastructure.Repositories;
 using HRManagement.Shared.Common.Caching;
+using HRManagement.Shared.Contracts.Events;
 using HRManagement.Shared.MessageBus;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -71,8 +74,14 @@ public static class ServiceExtensions
         services.AddMemoryCache();
         services.AddSingleton<ICacheService, MemoryCacheService>();
 
-        // Message Bus
-        services.AddInMemoryEventBus();
+        // Message Bus (RabbitMQ)
+        services.AddRabbitMqEventBus(configuration);
+
+        // Event Handlers
+        services.AddScoped<IEventHandler<CandidateHiredEvent>, CandidateHiredEventHandler>();
+
+        // Background Service for event subscription
+        services.AddHostedService<EventSubscriptionService>();
 
         return services;
     }

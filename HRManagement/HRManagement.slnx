@@ -10,6 +10,9 @@
   <Folder Name="/src/Services/Recruitment/">
     <Project Path="src/Services/Recruitment/HRManagement.Recruitment.Api/HRManagement.Recruitment.Api.csproj" />
   </Folder>
+  <Folder Name="/src/Services/Gateway/">
+    <Project Path="src/Services/Gateway/HRManagement.Gateway/HRManagement.Gateway/HRManagement.Gateway.csproj" />
+  </Folder>
   <Folder Name="/src/Shared/" />
   <Folder Name="/src/Shared/HRManagement.Shared.Common/">
     <Project Path="src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/HRManagement.Shared.Common.csproj" />

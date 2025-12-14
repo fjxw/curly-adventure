@@ -1,0 +1,8 @@
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Gateway/HRManagement.Gateway/HRManagement.Gateway/obj/Debug/net10.0/HRManagement.Gateway.csproj.AssemblyReference.cache
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Gateway/HRManagement.Gateway/HRManagement.Gateway/obj/Debug/net10.0/rpswa.dswa.cache.json
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Gateway/HRManagement.Gateway/HRManagement.Gateway/obj/Debug/net10.0/HRManagement.Gateway.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Gateway/HRManagement.Gateway/HRManagement.Gateway/obj/Debug/net10.0/HRManagement.Gateway.AssemblyInfoInputs.cache
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Gateway/HRManagement.Gateway/HRManagement.Gateway/obj/Debug/net10.0/HRManagement.Gateway.AssemblyInfo.cs
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Gateway/HRManagement.Gateway/HRManagement.Gateway/obj/Debug/net10.0/HRManagement.Gateway.csproj.CoreCompileInputs.cache
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Gateway/HRManagement.Gateway/HRManagement.Gateway/obj/Debug/net10.0/HRManagement.Gateway.MvcApplicationPartsAssemblyInfo.cs
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Gateway/HRManagement.Gateway/HRManagement.Gateway/obj/Debug/net10.0/HRManagement.Gateway.MvcApplicationPartsAssemblyInfo.cache

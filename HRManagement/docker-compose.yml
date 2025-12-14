@@ -1,6 +1,53 @@
 version: '3.8'
 
 services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: hr-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=hrmanagement
+      - RABBITMQ_DEFAULT_PASS=hrmanagement123
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - hr-network
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_running"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  gateway:
+    build:
+      context: .
+      dockerfile: src/Services/Gateway/HRManagement.Gateway/HRManagement.Gateway/Dockerfile
+    container_name: hr-gateway
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ServiceEndpoints__Employees=http://employees-api:80
+      - ServiceEndpoints__Payroll=http://payroll-api:80
+      - ServiceEndpoints__Recruitment=http://recruitment-api:80
+      - ReverseProxy__Clusters__employees-cluster__Destinations__destination1__Address=http://employees-api:80
+      - ReverseProxy__Clusters__payroll-cluster__Destinations__destination1__Address=http://payroll-api:80
+      - ReverseProxy__Clusters__recruitment-cluster__Destinations__destination1__Address=http://recruitment-api:80
+    networks:
+      - hr-network
+    depends_on:
+      - employees-api
+      - payroll-api
+      - recruitment-api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
   employees-api:
     build:
       context: .
@@ -15,10 +62,17 @@ services:
       - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
       - JwtSettings__Issuer=HRManagement
       - JwtSettings__Audience=HRManagement
+      - RabbitMQ__HostName=rabbitmq
+      - RabbitMQ__Port=5672
+      - RabbitMQ__UserName=hrmanagement
+      - RabbitMQ__Password=hrmanagement123
     volumes:
       - employees-data:/app/data
     networks:
       - hr-network
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:80/health"]
       interval: 30s
@@ -39,12 +93,19 @@ services:
       - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
       - JwtSettings__Issuer=HRManagement
       - JwtSettings__Audience=HRManagement
+      - RabbitMQ__HostName=rabbitmq
+      - RabbitMQ__Port=5672
+      - RabbitMQ__UserName=hrmanagement
+      - RabbitMQ__Password=hrmanagement123
     volumes:
       - payroll-data:/app/data
     networks:
       - hr-network
     depends_on:
-      - employees-api
+      rabbitmq:
+        condition: service_healthy
+      employees-api:
+        condition: service_started
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:80/health"]
       interval: 30s
@@ -65,12 +126,19 @@ services:
       - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
       - JwtSettings__Issuer=HRManagement
       - JwtSettings__Audience=HRManagement
+      - RabbitMQ__HostName=rabbitmq
+      - RabbitMQ__Port=5672
+      - RabbitMQ__UserName=hrmanagement
+      - RabbitMQ__Password=hrmanagement123
     volumes:
       - recruitment-data:/app/data
     networks:
       - hr-network
     depends_on:
-      - employees-api
+      rabbitmq:
+        condition: service_healthy
+      employees-api:
+        condition: service_started
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:80/health"]
       interval: 30s
@@ -82,6 +150,7 @@ networks:
     driver: bridge
 
 volumes:
+  rabbitmq-data:
   employees-data:
   payroll-data:
   recruitment-data:

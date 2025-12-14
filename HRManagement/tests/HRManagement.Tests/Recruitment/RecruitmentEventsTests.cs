@@ -10,6 +10,7 @@ public class RecruitmentEventsTests
     {
         // Arrange
         var candidateId = Guid.NewGuid();
+        var departmentId = Guid.NewGuid();
         var positionId = Guid.NewGuid();
         var hireDate = DateTime.UtcNow;
         var salary = 100000m;
@@ -20,6 +21,7 @@ public class RecruitmentEventsTests
             "Иван",
             "Петров",
             "ivan@company.com",
+            departmentId,
             positionId,
             salary,
             hireDate,
@@ -31,6 +33,7 @@ public class RecruitmentEventsTests
         evt.FirstName.Should().Be("Иван");
         evt.LastName.Should().Be("Петров");
         evt.Email.Should().Be("ivan@company.com");
+        evt.DepartmentId.Should().Be(departmentId);
         evt.PositionId.Should().Be(positionId);
         evt.Salary.Should().Be(100000m);
         evt.HireDate.Should().Be(hireDate);
@@ -48,6 +51,7 @@ public class RecruitmentEventsTests
             "Петров",
             "ivan@company.com",
             Guid.NewGuid(),
+            Guid.NewGuid(),
             80000m,
             hireDate,
             DateTime.UtcNow
@@ -58,6 +62,7 @@ public class RecruitmentEventsTests
             "Петр",
             "Иванов",
             "peter@company.com",
+            Guid.NewGuid(),
             Guid.NewGuid(),
             90000m,
             hireDate,
@@ -75,18 +80,19 @@ public class RecruitmentEventsTests
     {
         // Arrange
         var candidateId = Guid.NewGuid();
+        var departmentId = Guid.NewGuid();
         var positionId = Guid.NewGuid();
         var hireDate = new DateTime(2024, 1, 15);
         var createdAt = new DateTime(2024, 1, 15);
 
         var event1 = new CandidateHiredEvent(
             candidateId, "Иван", "Петров", "ivan@company.com",
-            positionId, 100000m, hireDate, createdAt
+            departmentId, positionId, 100000m, hireDate, createdAt
         );
 
         var event2 = new CandidateHiredEvent(
             candidateId, "Иван", "Петров", "ivan@company.com",
-            positionId, 100000m, hireDate, createdAt
+            departmentId, positionId, 100000m, hireDate, createdAt
         );
 
         // Assert - records with same values should be equal

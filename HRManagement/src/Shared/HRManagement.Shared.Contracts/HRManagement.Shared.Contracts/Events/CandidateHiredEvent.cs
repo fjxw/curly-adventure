@@ -5,6 +5,7 @@ public record CandidateHiredEvent(
     string FirstName,
     string LastName,
     string Email,
+    Guid DepartmentId,
     Guid PositionId,
     decimal Salary,
     DateTime HireDate,

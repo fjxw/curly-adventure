@@ -49,8 +49,8 @@ public static class ServiceExtensions
         services.AddMemoryCache();
         services.AddSingleton<ICacheService, MemoryCacheService>();
 
-        // Message Bus
-        services.AddInMemoryEventBus();
+        // Message Bus (RabbitMQ)
+        services.AddRabbitMqEventBus(configuration);
 
         return services;
     }

@@ -85,6 +85,7 @@ public class InMemoryEventBusTests
             "Алексей",         // FirstName
             "Сидоров",         // LastName
             "alex@company.com", // Email
+            Guid.NewGuid(),    // DepartmentId
             Guid.NewGuid(),    // PositionId
             75000m,            // Salary
             DateTime.UtcNow,   // HireDate

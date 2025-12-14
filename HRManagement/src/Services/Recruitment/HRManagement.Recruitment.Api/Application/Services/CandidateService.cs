@@ -185,6 +185,7 @@ public class CandidateService : ICandidateService
             candidate.FirstName,
             candidate.LastName,
             candidate.Email,
+            departmentId,
             positionId,
             0,
             DateTime.UtcNow,
