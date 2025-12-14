@@ -1,0 +1,355 @@
+{
+  "format": 1,
+  "restore": {
+    "/workspaces/dotnet-codespaces/HRManagement/src/Services/Documents/HRManagement.Documents.Api/HRManagement.Documents.Api.csproj": {}
+  },
+  "projects": {
+    "/workspaces/dotnet-codespaces/HRManagement/src/Services/Documents/HRManagement.Documents.Api/HRManagement.Documents.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/workspaces/dotnet-codespaces/HRManagement/src/Services/Documents/HRManagement.Documents.Api/HRManagement.Documents.Api.csproj",
+        "projectName": "HRManagement.Documents.Api",
+        "projectPath": "/workspaces/dotnet-codespaces/HRManagement/src/Services/Documents/HRManagement.Documents.Api/HRManagement.Documents.Api.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/workspaces/dotnet-codespaces/HRManagement/src/Services/Documents/HRManagement.Documents.Api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/HRManagement.Shared.Common.csproj": {
+                "projectPath": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/HRManagement.Shared.Common.csproj"
+              },
+              "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts.csproj": {
+                "projectPath": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts.csproj"
+              },
+              "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus.csproj": {
+                "projectPath": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/HRManagement.Shared.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/HRManagement.Shared.Common.csproj",
+        "projectName": "HRManagement.Shared.Common",
+        "projectPath": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/HRManagement.Shared.Common.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Common/HRManagement.Shared.Common/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts.csproj",
+        "projectName": "HRManagement.Shared.Contracts",
+        "projectPath": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.Contracts/HRManagement.Shared.Contracts/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus.csproj",
+        "projectName": "HRManagement.Shared.MessageBus",
+        "projectPath": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

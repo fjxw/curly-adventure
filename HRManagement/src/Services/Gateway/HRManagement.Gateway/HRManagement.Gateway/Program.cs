@@ -38,6 +38,8 @@ app.UseSwaggerUI(c =>
     c.SwaggerEndpoint("/api-docs/employees/swagger.json", "API Сотрудников");
     c.SwaggerEndpoint("/api-docs/payroll/swagger.json", "API Расчёта зарплаты");
     c.SwaggerEndpoint("/api-docs/recruitment/swagger.json", "API Рекрутинга");
+    c.SwaggerEndpoint("/api-docs/attendance/swagger.json", "API Посещаемости");
+    c.SwaggerEndpoint("/api-docs/documents/swagger.json", "API Документов");
     c.RoutePrefix = string.Empty;
     c.DocumentTitle = "HR Management - API Gateway";
 });
@@ -55,6 +57,8 @@ app.MapGet("/api-docs/{service}/swagger.json", async (string service, IHttpClien
         "employees" => endpoints?.Employees,
         "payroll" => endpoints?.Payroll,
         "recruitment" => endpoints?.Recruitment,
+        "attendance" => endpoints?.Attendance,
+        "documents" => endpoints?.Documents,
         _ => null
     };
 

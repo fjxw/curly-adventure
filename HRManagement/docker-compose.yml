@@ -33,15 +33,21 @@ services:
       - ServiceEndpoints__Employees=http://employees-api:80
       - ServiceEndpoints__Payroll=http://payroll-api:80
       - ServiceEndpoints__Recruitment=http://recruitment-api:80
+      - ServiceEndpoints__Attendance=http://attendance-api:80
+      - ServiceEndpoints__Documents=http://documents-api:80
       - ReverseProxy__Clusters__employees-cluster__Destinations__destination1__Address=http://employees-api:80
       - ReverseProxy__Clusters__payroll-cluster__Destinations__destination1__Address=http://payroll-api:80
       - ReverseProxy__Clusters__recruitment-cluster__Destinations__destination1__Address=http://recruitment-api:80
+      - ReverseProxy__Clusters__attendance-cluster__Destinations__destination1__Address=http://attendance-api:80
+      - ReverseProxy__Clusters__documents-cluster__Destinations__destination1__Address=http://documents-api:80
     networks:
       - hr-network
     depends_on:
       - employees-api
       - payroll-api
       - recruitment-api
+      - attendance-api
+      - documents-api
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:80/health"]
       interval: 30s
@@ -145,6 +151,68 @@ services:
       timeout: 10s
       retries: 3
 
+  attendance-api:
+    build:
+      context: .
+      dockerfile: src/Services/Attendance/HRManagement.Attendance.Api/Dockerfile
+    container_name: hr-attendance-api
+    ports:
+      - "5004:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/attendance.db
+      - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
+      - JwtSettings__Issuer=HRManagement
+      - JwtSettings__Audience=HRManagement
+      - RabbitMQ__HostName=rabbitmq
+      - RabbitMQ__Port=5672
+      - RabbitMQ__UserName=hrmanagement
+      - RabbitMQ__Password=hrmanagement123
+    volumes:
+      - attendance-data:/app/data
+    networks:
+      - hr-network
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  documents-api:
+    build:
+      context: .
+      dockerfile: src/Services/Documents/HRManagement.Documents.Api/Dockerfile
+    container_name: hr-documents-api
+    ports:
+      - "5005:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/documents.db
+      - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
+      - JwtSettings__Issuer=HRManagement
+      - JwtSettings__Audience=HRManagement
+      - RabbitMQ__HostName=rabbitmq
+      - RabbitMQ__Port=5672
+      - RabbitMQ__UserName=hrmanagement
+      - RabbitMQ__Password=hrmanagement123
+    volumes:
+      - documents-data:/app/data
+    networks:
+      - hr-network
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
 networks:
   hr-network:
     driver: bridge
@@ -154,3 +222,5 @@ volumes:
   employees-data:
   payroll-data:
   recruitment-data:
+  attendance-data:
+  documents-data:

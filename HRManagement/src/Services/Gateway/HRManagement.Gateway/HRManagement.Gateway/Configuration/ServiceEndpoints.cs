@@ -5,4 +5,6 @@ public class ServiceEndpoints
     public string Employees { get; set; } = "http://localhost:5001";
     public string Payroll { get; set; } = "http://localhost:5002";
     public string Recruitment { get; set; } = "http://localhost:5003";
+    public string Attendance { get; set; } = "http://localhost:5004";
+    public string Documents { get; set; } = "http://localhost:5005";
 }

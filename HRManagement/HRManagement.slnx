@@ -10,6 +10,12 @@
   <Folder Name="/src/Services/Recruitment/">
     <Project Path="src/Services/Recruitment/HRManagement.Recruitment.Api/HRManagement.Recruitment.Api.csproj" />
   </Folder>
+  <Folder Name="/src/Services/Attendance/">
+    <Project Path="src/Services/Attendance/HRManagement.Attendance.Api/HRManagement.Attendance.Api.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/Documents/">
+    <Project Path="src/Services/Documents/HRManagement.Documents.Api/HRManagement.Documents.Api.csproj" />
+  </Folder>
   <Folder Name="/src/Services/Gateway/">
     <Project Path="src/Services/Gateway/HRManagement.Gateway/HRManagement.Gateway/HRManagement.Gateway.csproj" />
   </Folder>
