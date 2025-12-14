@@ -2,11 +2,9 @@ using HRManagement.Gateway.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add YARP Reverse Proxy
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
-// Add Swagger for aggregated documentation
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -18,11 +16,9 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Register services swagger configuration  
 builder.Services.AddHttpClient();
 builder.Services.Configure<ServiceEndpoints>(builder.Configuration.GetSection("ServiceEndpoints"));
 
-// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -35,25 +31,22 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gateway API v1");
-    c.SwaggerEndpoint("/api-docs/employees/swagger.json", "Employees API");
-    c.SwaggerEndpoint("/api-docs/payroll/swagger.json", "Payroll API");
-    c.SwaggerEndpoint("/api-docs/recruitment/swagger.json", "Recruitment API");
+    c.SwaggerEndpoint("/api-docs/employees/swagger.json", "API Сотрудников");
+    c.SwaggerEndpoint("/api-docs/payroll/swagger.json", "API Расчёта зарплаты");
+    c.SwaggerEndpoint("/api-docs/recruitment/swagger.json", "API Рекрутинга");
     c.RoutePrefix = string.Empty;
     c.DocumentTitle = "HR Management - API Gateway";
 });
 
 app.UseCors("AllowAll");
 
-// Health check endpoint
 app.MapGet("/health", () => Results.Ok(new { Status = "Healthy", Service = "Gateway" }))
-    .WithTags("Health");
+    .WithTags("Здоровье");
 
-// Proxy swagger endpoints from microservices
 app.MapGet("/api-docs/{service}/swagger.json", async (string service, IHttpClientFactory httpClientFactory, IConfiguration config) =>
 {
     var endpoints = config.GetSection("ServiceEndpoints").Get<ServiceEndpoints>();
@@ -66,7 +59,7 @@ app.MapGet("/api-docs/{service}/swagger.json", async (string service, IHttpClien
     };
 
     if (string.IsNullOrEmpty(serviceUrl))
-        return Results.NotFound($"Service '{service}' not found");
+        return Results.NotFound($"Сервис '{service}' не найден");
 
     try
     {
@@ -76,11 +69,10 @@ app.MapGet("/api-docs/{service}/swagger.json", async (string service, IHttpClien
     }
     catch (Exception ex)
     {
-        return Results.Problem($"Failed to fetch swagger from {service}: {ex.Message}");
+        return Results.Problem($"Не удалось получить swagger от {service}: {ex.Message}");
     }
 }).ExcludeFromDescription();
 
-// Map reverse proxy routes
 app.MapReverseProxy();
 
 app.Run();

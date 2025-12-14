@@ -6,10 +6,6 @@ using Microsoft.Extensions.Logging;
 
 namespace HRManagement.Employees.Api.Application.EventHandlers;
 
-/// <summary>
-/// Handles CandidateHiredEvent from Recruitment service.
-/// Automatically creates a new employee when a candidate is hired.
-/// </summary>
 public class CandidateHiredEventHandler : IEventHandler<CandidateHiredEvent>
 {
     private readonly IEmployeeService _employeeService;
@@ -26,7 +22,7 @@ public class CandidateHiredEventHandler : IEventHandler<CandidateHiredEvent>
     public async Task HandleAsync(CandidateHiredEvent @event, CancellationToken cancellationToken = default)
     {
         _logger.LogInformation(
-            "Processing CandidateHiredEvent for candidate {CandidateId}: {FirstName} {LastName}",
+            "Обработка события CandidateHiredEvent для кандидата {CandidateId}: {FirstName} {LastName}",
             @event.CandidateId, @event.FirstName, @event.LastName);
 
         try
@@ -37,7 +33,7 @@ public class CandidateHiredEventHandler : IEventHandler<CandidateHiredEvent>
                 MiddleName: null,
                 Email: @event.Email,
                 Phone: null,
-                DateOfBirth: DateTime.UtcNow.AddYears(-25), // Default, should be updated later
+                DateOfBirth: DateTime.UtcNow.AddYears(-25),
                 Address: null,
                 PassportNumber: null,
                 TaxId: null,
@@ -50,20 +46,20 @@ public class CandidateHiredEventHandler : IEventHandler<CandidateHiredEvent>
             if (result.Success)
             {
                 _logger.LogInformation(
-                    "Successfully created employee {EmployeeId} from candidate {CandidateId}",
+                    "Успешно создан сотрудник {EmployeeId} из кандидата {CandidateId}",
                     result.Data?.Id, @event.CandidateId);
             }
             else
             {
                 _logger.LogWarning(
-                    "Failed to create employee from candidate {CandidateId}: {Message}",
+                    "Не удалось создать сотрудника из кандидата {CandidateId}: {Message}",
                     @event.CandidateId, result.Message);
             }
         }
         catch (Exception ex)
         {
             _logger.LogError(ex,
-                "Error creating employee from candidate {CandidateId}",
+                "Ошибка создания сотрудника из кандидата {CandidateId}",
                 @event.CandidateId);
             throw;
         }

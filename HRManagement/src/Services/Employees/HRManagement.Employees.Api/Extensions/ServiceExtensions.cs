@@ -58,29 +58,28 @@ public static class ServiceExtensions
 
         services.AddAuthorization();
 
-        // Repositories
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         services.AddScoped<IDepartmentRepository, DepartmentRepository>();
         services.AddScoped<IPositionRepository, PositionRepository>();
 
-        // Services
         services.AddScoped<IEmployeeService, EmployeeService>();
         services.AddScoped<IDepartmentService, DepartmentService>();
         services.AddScoped<IPositionService, PositionService>();
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<ILeaveService, LeaveService>();
+        services.AddScoped<ISkillService, SkillService>();
+        services.AddScoped<IPositionHistoryService, PositionHistoryService>();
+        services.AddScoped<IFileStorageService, FileStorageService>();
+        services.AddHttpContextAccessor();
 
-        // Caching
         services.AddMemoryCache();
         services.AddSingleton<ICacheService, MemoryCacheService>();
 
-        // Message Bus (RabbitMQ)
         services.AddRabbitMqEventBus(configuration);
 
-        // Event Handlers
         services.AddScoped<IEventHandler<CandidateHiredEvent>, CandidateHiredEventHandler>();
 
-        // Background Service for event subscription
         services.AddHostedService<EventSubscriptionService>();
 
         return services;

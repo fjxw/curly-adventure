@@ -15,21 +15,19 @@ public static class ServiceExtensions
 {
     public static IServiceCollection AddRecruitmentServices(this IServiceCollection services, IConfiguration configuration)
     {
-        // Database
         services.AddDbContext<RecruitmentDbContext>(options =>
             options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
 
-        // Application Services
         services.AddScoped<IVacancyService, VacancyService>();
         services.AddScoped<ICandidateService, CandidateService>();
         services.AddScoped<IInterviewService, InterviewService>();
         services.AddScoped<ITrainingService, TrainingService>();
+        services.AddScoped<IFileStorageService, FileStorageService>();
+        services.AddHttpContextAccessor();
 
-        // Cache Service
         services.AddMemoryCache();
         services.AddSingleton<ICacheService, MemoryCacheService>();
 
-        // Message Bus (RabbitMQ)
         services.AddRabbitMqEventBus(configuration);
 
         return services;

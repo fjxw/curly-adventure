@@ -16,6 +16,10 @@ public class EmployeesDbContext : IdentityDbContext<ApplicationUser, IdentityRol
     public DbSet<Position> Positions => Set<Position>();
     public DbSet<JobResponsibility> JobResponsibilities => Set<JobResponsibility>();
     public DbSet<EmployeeDocument> EmployeeDocuments => Set<EmployeeDocument>();
+    public DbSet<LeaveRequest> LeaveRequests => Set<LeaveRequest>();
+    public DbSet<PositionHistory> PositionHistories => Set<PositionHistory>();
+    public DbSet<Skill> Skills => Set<Skill>();
+    public DbSet<EmployeeSkill> EmployeeSkills => Set<EmployeeSkill>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

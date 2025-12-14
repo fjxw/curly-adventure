@@ -3,10 +3,6 @@ using HRManagement.Shared.MessageBus;
 
 namespace HRManagement.Employees.Api.Infrastructure.EventSubscription;
 
-/// <summary>
-/// Background service that subscribes to events from other microservices.
-/// Starts listening when the application starts.
-/// </summary>
 public class EventSubscriptionService : BackgroundService
 {
     private readonly IServiceProvider _serviceProvider;
@@ -25,11 +21,11 @@ public class EventSubscriptionService : BackgroundService
 
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _logger.LogInformation("Event subscription service is starting...");
+        _logger.LogInformation("Сервис подписок на события запускается...");
 
         SubscribeToCandidateHiredEvent();
 
-        _logger.LogInformation("Event subscription service started successfully");
+        _logger.LogInformation("Сервис подписок на события успешно запущен");
 
         return Task.CompletedTask;
     }
@@ -39,7 +35,7 @@ public class EventSubscriptionService : BackgroundService
         _eventBus.Subscribe<CandidateHiredEvent>(async @event =>
         {
             _logger.LogInformation(
-                "Received CandidateHiredEvent for candidate {CandidateId}",
+                "Получено событие CandidateHiredEvent для кандидата {CandidateId}",
                 @event.CandidateId);
 
             using var scope = _serviceProvider.CreateScope();
@@ -49,6 +45,6 @@ public class EventSubscriptionService : BackgroundService
             await handler.HandleAsync(@event);
         });
 
-        _logger.LogInformation("Subscribed to CandidateHiredEvent");
+        _logger.LogInformation("Подписка на CandidateHiredEvent выполнена");
     }
 }

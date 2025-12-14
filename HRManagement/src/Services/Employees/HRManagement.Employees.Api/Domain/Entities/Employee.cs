@@ -13,6 +13,7 @@ public class Employee : BaseEntity
     public string? Address { get; set; }
     public string? PassportNumber { get; set; }
     public string? TaxId { get; set; }
+    public string? PhotoPath { get; set; }
     
     public Guid DepartmentId { get; set; }
     public Department Department { get; set; } = null!;
@@ -25,4 +26,7 @@ public class Employee : BaseEntity
     public bool IsActive { get; set; } = true;
     
     public ICollection<EmployeeDocument> Documents { get; set; } = new List<EmployeeDocument>();
+    public ICollection<LeaveRequest> LeaveRequests { get; set; } = new List<LeaveRequest>();
+    public ICollection<PositionHistory> PositionHistories { get; set; } = new List<PositionHistory>();
+    public ICollection<EmployeeSkill> Skills { get; set; } = new List<EmployeeSkill>();
 }

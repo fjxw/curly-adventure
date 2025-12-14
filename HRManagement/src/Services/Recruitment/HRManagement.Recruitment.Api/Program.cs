@@ -1,15 +1,15 @@
+using HRManagement.Recruitment.Api.Endpoints;
 using HRManagement.Recruitment.Api.Extensions;
 using HRManagement.Recruitment.Api.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
 builder.Services.AddRecruitmentServices(builder.Configuration);
 builder.Services.AddJwtAuthentication(builder.Configuration);
 builder.Services.AddSwaggerDocumentation();
 
-// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -22,7 +22,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -33,20 +32,28 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+var uploadsPath = Path.Combine(app.Environment.ContentRootPath, "uploads");
+if (!Directory.Exists(uploadsPath))
+    Directory.CreateDirectory(uploadsPath);
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(uploadsPath),
+    RequestPath = "/files"
+});
+
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Map endpoints
 app.MapRecruitmentEndpoints();
+app.MapCandidateFileEndpoints();
 
-// Health check
 app.MapGet("/health", () => Results.Ok(new { Status = "Healthy", Service = "Recruitment" }))
-    .WithTags("Health")
+    .WithTags("Здоровье")
     .AllowAnonymous();
 
-// Apply migrations
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<RecruitmentDbContext>();

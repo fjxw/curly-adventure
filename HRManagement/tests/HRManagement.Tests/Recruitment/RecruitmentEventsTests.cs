@@ -8,14 +8,12 @@ public class RecruitmentEventsTests
     [Fact]
     public void CandidateHiredEvent_ShouldHaveAllProperties()
     {
-        // Arrange
         var candidateId = Guid.NewGuid();
         var departmentId = Guid.NewGuid();
         var positionId = Guid.NewGuid();
         var hireDate = DateTime.UtcNow;
         var salary = 100000m;
 
-        // Act
         var evt = new CandidateHiredEvent(
             candidateId,
             "Иван",
@@ -28,7 +26,6 @@ public class RecruitmentEventsTests
             DateTime.UtcNow
         );
 
-        // Assert
         evt.CandidateId.Should().Be(candidateId);
         evt.FirstName.Should().Be("Иван");
         evt.LastName.Should().Be("Петров");
@@ -42,7 +39,6 @@ public class RecruitmentEventsTests
     [Fact]
     public void CandidateHiredEvent_WithDifferentCandidates_ShouldNotBeEqual()
     {
-        // Arrange
         var hireDate = DateTime.UtcNow;
         
         var event1 = new CandidateHiredEvent(
@@ -69,7 +65,6 @@ public class RecruitmentEventsTests
             DateTime.UtcNow
         );
 
-        // Assert
         event1.CandidateId.Should().NotBe(event2.CandidateId);
         event1.FirstName.Should().NotBe(event2.FirstName);
         event1.Salary.Should().NotBe(event2.Salary);
@@ -78,7 +73,6 @@ public class RecruitmentEventsTests
     [Fact]
     public void CandidateHiredEvent_RecordEquality_ShouldWork()
     {
-        // Arrange
         var candidateId = Guid.NewGuid();
         var departmentId = Guid.NewGuid();
         var positionId = Guid.NewGuid();
@@ -95,7 +89,6 @@ public class RecruitmentEventsTests
             departmentId, positionId, 100000m, hireDate, createdAt
         );
 
-        // Assert - records with same values should be equal
         event1.Should().Be(event2);
     }
 }

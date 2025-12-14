@@ -10,6 +10,8 @@ public class Candidate : BaseEntity
     public string? Phone { get; set; }
     
     public string? ResumeUrl { get; set; }
+    public string? ResumePath { get; set; }
+    public string? PhotoPath { get; set; }
     public string? CoverLetter { get; set; }
     public int YearsOfExperience { get; set; }
     public string? Education { get; set; }

@@ -7,9 +7,6 @@ using RabbitMQ.Client.Events;
 
 namespace HRManagement.Shared.MessageBus;
 
-/// <summary>
-/// RabbitMQ implementation of IEventBus for inter-service communication.
-/// </summary>
 public class RabbitMqEventBus : IEventBus, IDisposable
 {
     private readonly RabbitMqSettings _settings;
@@ -46,14 +43,13 @@ public class RabbitMqEventBus : IEventBus, IDisposable
                 _connection = factory.CreateConnection();
                 _channel = _connection.CreateModel();
 
-                // Declare a topic exchange for event routing
                 _channel.ExchangeDeclare(
                     exchange: _settings.ExchangeName,
                     type: ExchangeType.Topic,
                     durable: true,
                     autoDelete: false);
 
-                _logger.LogInformation("Successfully connected to RabbitMQ at {Host}:{Port}", 
+                _logger.LogInformation("Успешное подключение к RabbitMQ: {Host}:{Port}", 
                     _settings.HostName, _settings.Port);
                 return;
             }
@@ -61,12 +57,12 @@ public class RabbitMqEventBus : IEventBus, IDisposable
             {
                 retryCount++;
                 _logger.LogWarning(ex, 
-                    "Failed to connect to RabbitMQ. Attempt {Attempt}/{MaxAttempts}. Retrying in {Delay}ms...",
+                    "Ошибка подключения к RabbitMQ. Попытка {Attempt}/{MaxAttempts}. Повтор через {Delay}мс...",
                     retryCount, _settings.RetryCount, _settings.RetryDelayMs);
 
                 if (retryCount >= _settings.RetryCount)
                 {
-                    _logger.LogError(ex, "Could not connect to RabbitMQ after {MaxAttempts} attempts", 
+                    _logger.LogError(ex, "Не удалось подключиться к RabbitMQ после {MaxAttempts} попыток", 
                         _settings.RetryCount);
                     throw;
                 }
@@ -102,7 +98,7 @@ public class RabbitMqEventBus : IEventBus, IDisposable
                 basicProperties: properties,
                 body: body);
 
-            _logger.LogDebug("Published event {EventName} with MessageId {MessageId}", 
+            _logger.LogDebug("Опубликовано событие {EventName} с MessageId {MessageId}", 
                 eventName, properties.MessageId);
         }
 
@@ -120,7 +116,6 @@ public class RabbitMqEventBus : IEventBus, IDisposable
         {
             EnsureConnection();
 
-            // Declare a durable queue for this event type
             _channel!.QueueDeclare(
                 queue: queueName,
                 durable: true,
@@ -128,13 +123,11 @@ public class RabbitMqEventBus : IEventBus, IDisposable
                 autoDelete: false,
                 arguments: null);
 
-            // Bind queue to exchange with routing key matching event name
             _channel.QueueBind(
                 queue: queueName,
                 exchange: _settings.ExchangeName,
                 routingKey: eventName);
 
-            // Set prefetch count for fair dispatch
             _channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
 
             var consumer = new AsyncEventingBasicConsumer(_channel);
@@ -149,13 +142,12 @@ public class RabbitMqEventBus : IEventBus, IDisposable
                     {
                         await handler(@event);
                         _channel.BasicAck(ea.DeliveryTag, multiple: false);
-                        _logger.LogDebug("Successfully processed event {EventName}", eventName);
+                        _logger.LogDebug("Успешно обработано событие {EventName}", eventName);
                     }
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, "Error processing event {EventName}", eventName);
-                    // Negative acknowledgement - requeue the message
+                    _logger.LogError(ex, "Ошибка обработки события {EventName}", eventName);
                     _channel.BasicNack(ea.DeliveryTag, multiple: false, requeue: true);
                 }
             };
@@ -165,7 +157,7 @@ public class RabbitMqEventBus : IEventBus, IDisposable
                 autoAck: false,
                 consumer: consumer);
 
-            _logger.LogInformation("Subscribed to event {EventName} on queue {QueueName}", 
+            _logger.LogInformation("Подписка на событие {EventName}, очередь {QueueName}", 
                 eventName, queueName);
         }
     }
@@ -174,7 +166,7 @@ public class RabbitMqEventBus : IEventBus, IDisposable
     {
         if (_connection is not { IsOpen: true })
         {
-            _logger.LogWarning("RabbitMQ connection lost. Attempting to reconnect...");
+            _logger.LogWarning("Соединение с RabbitMQ потеряно. Переподключение...");
             InitializeConnection();
         }
     }
@@ -189,6 +181,6 @@ public class RabbitMqEventBus : IEventBus, IDisposable
         _connection?.Close();
         _connection?.Dispose();
 
-        _logger.LogInformation("RabbitMQ connection disposed");
+        _logger.LogInformation("Соединение с RabbitMQ закрыто");
     }
 }

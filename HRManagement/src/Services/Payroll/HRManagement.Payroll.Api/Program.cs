@@ -4,13 +4,11 @@ using HRManagement.Payroll.Api.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddSwaggerServices();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -23,12 +21,14 @@ if (app.Environment.IsDevelopment())
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Map endpoints
 app.MapSalaryEndpoints();
 app.MapStaffingEndpoints();
 app.MapTimeSheetEndpoints();
 
-// Apply migrations
+app.MapGet("/health", () => Results.Ok(new { Status = "Healthy", Service = "Payroll" }))
+    .WithTags("Здоровье")
+    .AllowAnonymous();
+
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<PayrollDbContext>();
