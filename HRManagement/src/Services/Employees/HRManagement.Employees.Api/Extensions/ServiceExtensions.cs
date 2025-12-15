@@ -22,7 +22,7 @@ public static class ServiceExtensions
     {
         // Database
         services.AddDbContext<EmployeesDbContext>(options =>
-            options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
         // Identity
         services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(options =>

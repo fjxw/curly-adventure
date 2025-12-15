@@ -1,6 +1,26 @@
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: hr-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=hrmanagement
+      - POSTGRES_PASSWORD=hrmanagement123
+      - POSTGRES_MULTIPLE_DATABASES=employees,payroll,recruitment,attendance,documents
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./init-databases.sh:/docker-entrypoint-initdb.d/init-databases.sh
+    networks:
+      - hr-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hrmanagement"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   rabbitmq:
     image: rabbitmq:3-management
     container_name: hr-rabbitmq
@@ -64,7 +84,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - ConnectionStrings__DefaultConnection=Data Source=/app/data/employees.db
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=employees;Username=hrmanagement;Password=hrmanagement123
       - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
       - JwtSettings__Issuer=HRManagement
       - JwtSettings__Audience=HRManagement
@@ -73,10 +93,12 @@ services:
       - RabbitMQ__UserName=hrmanagement
       - RabbitMQ__Password=hrmanagement123
     volumes:
-      - employees-data:/app/data
+      - employees-uploads:/app/uploads
     networks:
       - hr-network
     depends_on:
+      postgres:
+        condition: service_healthy
       rabbitmq:
         condition: service_healthy
     healthcheck:
@@ -95,7 +117,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - ConnectionStrings__DefaultConnection=Data Source=/app/data/payroll.db
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=payroll;Username=hrmanagement;Password=hrmanagement123
       - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
       - JwtSettings__Issuer=HRManagement
       - JwtSettings__Audience=HRManagement
@@ -103,11 +125,11 @@ services:
       - RabbitMQ__Port=5672
       - RabbitMQ__UserName=hrmanagement
       - RabbitMQ__Password=hrmanagement123
-    volumes:
-      - payroll-data:/app/data
     networks:
       - hr-network
     depends_on:
+      postgres:
+        condition: service_healthy
       rabbitmq:
         condition: service_healthy
       employees-api:
@@ -128,7 +150,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - ConnectionStrings__DefaultConnection=Data Source=/app/data/recruitment.db
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=recruitment;Username=hrmanagement;Password=hrmanagement123
       - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
       - JwtSettings__Issuer=HRManagement
       - JwtSettings__Audience=HRManagement
@@ -137,10 +159,12 @@ services:
       - RabbitMQ__UserName=hrmanagement
       - RabbitMQ__Password=hrmanagement123
     volumes:
-      - recruitment-data:/app/data
+      - recruitment-uploads:/app/uploads
     networks:
       - hr-network
     depends_on:
+      postgres:
+        condition: service_healthy
       rabbitmq:
         condition: service_healthy
       employees-api:
@@ -161,7 +185,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - ConnectionStrings__DefaultConnection=Data Source=/app/data/attendance.db
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=attendance;Username=hrmanagement;Password=hrmanagement123
       - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
       - JwtSettings__Issuer=HRManagement
       - JwtSettings__Audience=HRManagement
@@ -169,11 +193,11 @@ services:
       - RabbitMQ__Port=5672
       - RabbitMQ__UserName=hrmanagement
       - RabbitMQ__Password=hrmanagement123
-    volumes:
-      - attendance-data:/app/data
     networks:
       - hr-network
     depends_on:
+      postgres:
+        condition: service_healthy
       rabbitmq:
         condition: service_healthy
     healthcheck:
@@ -192,7 +216,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - ConnectionStrings__DefaultConnection=Data Source=/app/data/documents.db
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=documents;Username=hrmanagement;Password=hrmanagement123
       - JwtSettings__SecretKey=YourSuperSecretKeyThatIsAtLeast32CharactersLong!
       - JwtSettings__Issuer=HRManagement
       - JwtSettings__Audience=HRManagement
@@ -201,10 +225,12 @@ services:
       - RabbitMQ__UserName=hrmanagement
       - RabbitMQ__Password=hrmanagement123
     volumes:
-      - documents-data:/app/data
+      - documents-storage:/app/documents
     networks:
       - hr-network
     depends_on:
+      postgres:
+        condition: service_healthy
       rabbitmq:
         condition: service_healthy
     healthcheck:
@@ -218,9 +244,8 @@ networks:
     driver: bridge
 
 volumes:
+  postgres-data:
   rabbitmq-data:
-  employees-data:
-  payroll-data:
-  recruitment-data:
-  attendance-data:
-  documents-data:
+  employees-uploads:
+  recruitment-uploads:
+  documents-storage:

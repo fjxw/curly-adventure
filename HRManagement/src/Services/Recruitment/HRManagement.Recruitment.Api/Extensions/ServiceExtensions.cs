@@ -16,7 +16,7 @@ public static class ServiceExtensions
     public static IServiceCollection AddRecruitmentServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<RecruitmentDbContext>(options =>
-            options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
         services.AddScoped<IVacancyService, VacancyService>();
         services.AddScoped<ICandidateService, CandidateService>();

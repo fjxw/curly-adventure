@@ -16,7 +16,7 @@ public static class ServiceExtensions
     {
         // Database
         services.AddDbContext<PayrollDbContext>(options =>
-            options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
         // JWT Authentication
         services.AddAuthentication(options =>
