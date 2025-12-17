@@ -8,6 +8,11 @@ namespace HRManagement.Attendance.Api.Extensions;
 
 public static class ServiceExtensions
 {
+    static ServiceExtensions()
+    {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    }
+
     public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<AttendanceDbContext>(options =>

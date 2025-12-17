@@ -57,7 +57,7 @@ app.MapGet("/health", () => Results.Ok(new { Статус = "Работает", 
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<RecruitmentDbContext>();
-    dbContext.Database.Migrate();
+    dbContext.Database.EnsureCreated();
 }
 
 app.Run();
