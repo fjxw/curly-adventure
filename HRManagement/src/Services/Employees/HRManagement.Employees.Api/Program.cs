@@ -1,6 +1,7 @@
 using HRManagement.Employees.Api.Endpoints;
 using HRManagement.Employees.Api.Extensions;
 using HRManagement.Employees.Api.Infrastructure.Data;
+using HRManagement.Employees.Api.Infrastructure.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 
@@ -16,7 +17,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "HR Management - Employees API v1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Микросервис сотрудников");
     });
 }
 
@@ -30,6 +31,7 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = "/files"
 });
 
+app.UseJwtCookieAuthentication();
 app.UseAuthentication();
 app.UseAuthorization();
 

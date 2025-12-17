@@ -10,9 +10,9 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
-        Title = "HR Management API Gateway",
+        Title = "API Шлюз",
         Version = "v1",
-        Description = "Единая точка входа для всех микросервисов HR Management"
+        Description = "Единая точка входа для всех микросервисов"
     });
 });
 
@@ -34,14 +34,14 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gateway API v1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Шлюз");
     c.SwaggerEndpoint("/api-docs/employees/swagger.json", "API Сотрудников");
     c.SwaggerEndpoint("/api-docs/payroll/swagger.json", "API Расчёта зарплаты");
     c.SwaggerEndpoint("/api-docs/recruitment/swagger.json", "API Рекрутинга");
     c.SwaggerEndpoint("/api-docs/attendance/swagger.json", "API Посещаемости");
     c.SwaggerEndpoint("/api-docs/documents/swagger.json", "API Документов");
     c.RoutePrefix = string.Empty;
-    c.DocumentTitle = "HR Management - API Gateway";
+    c.DocumentTitle = "API Шлюз";
 });
 
 app.UseCors("AllowAll");

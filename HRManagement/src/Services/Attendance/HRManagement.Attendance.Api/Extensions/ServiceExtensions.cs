@@ -29,7 +29,7 @@ public static class ServiceExtensions
         {
             c.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "HR Management - Посещаемость API",
+                Title = "Микросервис посещаемости",
                 Version = "v1",
                 Description = "API для управления посещаемостью, графиками работы и табелями учёта рабочего времени"
             });

@@ -57,7 +57,7 @@ public static class ServiceExtensions
         {
             c.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "HR Management - Payroll API",
+                Title = "Микросервис зарплаты",
                 Version = "v1",
                 Description = "Микросервис расчёта заработной платы и штатного расписания"
             });

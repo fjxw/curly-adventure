@@ -89,7 +89,7 @@ public static class ServiceExtensions
         {
             c.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "HR Management - Employees API",
+                Title = "Микросервис сотрудников",
                 Version = "v1",
                 Description = "Микросервис кадрового учёта"
             });

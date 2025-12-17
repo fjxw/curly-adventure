@@ -28,7 +28,7 @@ public static class ServiceExtensions
         {
             c.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "HR Management - Документы API",
+                Title = "Микросервис документов",
                 Version = "v1",
                 Description = "API для управления HR-документами, шаблонами и электронным подписанием"
             });

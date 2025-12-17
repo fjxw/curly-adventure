@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HRManagement.Gateway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a3f8a968607dfb0dc6e1207fc12de89499fe46f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df5fe3dc70e451b40d693020cecb78f45ba8130c")]
 [assembly: System.Reflection.AssemblyProductAttribute("HRManagement.Gateway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HRManagement.Gateway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

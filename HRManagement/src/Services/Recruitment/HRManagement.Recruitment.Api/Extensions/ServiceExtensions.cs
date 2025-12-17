@@ -69,7 +69,7 @@ public static class ServiceExtensions
         {
             options.SwaggerDoc("v1", new OpenApiInfo
             {
-                Title = "HR Management - Recruitment API",
+                Title = "Микросервис рекрутинга",
                 Version = "v1",
                 Description = "API для управления рекрутингом и обучением персонала"
             });
