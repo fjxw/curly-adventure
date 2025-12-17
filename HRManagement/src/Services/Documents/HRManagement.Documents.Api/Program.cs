@@ -16,8 +16,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("/health", () => Results.Ok(new { status = "Healthy", service = "Documents API" }))
-    .WithTags("Здоровье")
+app.MapGet("/health", () => Results.Ok(new { Статус = "Работает", Сервис = "Документы" }))
+    .WithTags("Работоспособность сервиса")
     .WithName("HealthCheck");
 
 app.MapDocumentEndpoints();

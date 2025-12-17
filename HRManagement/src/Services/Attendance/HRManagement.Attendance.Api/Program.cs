@@ -16,8 +16,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("/health", () => Results.Ok(new { status = "Healthy", service = "Attendance API" }))
-    .WithTags("Здоровье")
+app.MapGet("/health", () => Results.Ok(new { Статус = "Работает", Сервис = "Посещаемость" }))
+    .WithTags("Работоспособность сервиса")
     .WithName("HealthCheck");
 
 app.MapAttendanceEndpoints();

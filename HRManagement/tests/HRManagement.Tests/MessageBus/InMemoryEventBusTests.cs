@@ -9,7 +9,6 @@ public class InMemoryEventBusTests
     [Fact]
     public async Task PublishAsync_ShouldCallSubscribedHandler()
     {
-        // Arrange
         var eventBus = new InMemoryEventBus();
         EmployeeCreatedEvent? receivedEvent = null;
         
@@ -20,20 +19,18 @@ public class InMemoryEventBusTests
         });
 
         var testEvent = new EmployeeCreatedEvent(
-            Guid.NewGuid(),    // EmployeeId
-            "Иван",            // FirstName
-            "Петров",          // LastName
-            "ivan@company.com", // Email
-            Guid.NewGuid(),    // DepartmentId
-            Guid.NewGuid(),    // PositionId
-            DateTime.UtcNow,   // HireDate
-            DateTime.UtcNow    // CreatedAt
+            Guid.NewGuid(),
+            "Иван",
+            "Петров",
+            "ivan@company.com",
+            Guid.NewGuid(),
+            Guid.NewGuid(),
+            DateTime.UtcNow,
+            DateTime.UtcNow
         );
 
-        // Act
         await eventBus.PublishAsync(testEvent);
 
-        // Assert
         receivedEvent.Should().NotBeNull();
         receivedEvent!.FirstName.Should().Be("Иван");
         receivedEvent.LastName.Should().Be("Петров");
@@ -43,7 +40,6 @@ public class InMemoryEventBusTests
     [Fact]
     public async Task PublishAsync_WithNoSubscribers_ShouldNotThrow()
     {
-        // Arrange
         var eventBus = new InMemoryEventBus();
         var testEvent = new EmployeeCreatedEvent(
             Guid.NewGuid(),
@@ -56,7 +52,6 @@ public class InMemoryEventBusTests
             DateTime.UtcNow
         );
 
-        // Act & Assert
         var act = async () => await eventBus.PublishAsync(testEvent);
         await act.Should().NotThrowAsync();
     }
@@ -64,7 +59,6 @@ public class InMemoryEventBusTests
     [Fact]
     public async Task Subscribe_MultipleHandlers_AllShouldBeCalled()
     {
-        // Arrange
         var eventBus = new InMemoryEventBus();
         var callCount = 0;
 
@@ -81,28 +75,25 @@ public class InMemoryEventBusTests
         });
 
         var testEvent = new CandidateHiredEvent(
-            Guid.NewGuid(),    // CandidateId
-            "Алексей",         // FirstName
-            "Сидоров",         // LastName
-            "alex@company.com", // Email
-            Guid.NewGuid(),    // DepartmentId
-            Guid.NewGuid(),    // PositionId
-            75000m,            // Salary
-            DateTime.UtcNow,   // HireDate
-            DateTime.UtcNow    // CreatedAt
+            Guid.NewGuid(),
+            "Алексей",
+            "Сидоров",
+            "alex@company.com",
+            Guid.NewGuid(),
+            Guid.NewGuid(),
+            75000m,
+            DateTime.UtcNow,
+            DateTime.UtcNow
         );
 
-        // Act
         await eventBus.PublishAsync(testEvent);
 
-        // Assert
         callCount.Should().Be(2);
     }
 
     [Fact]
     public async Task PublishAsync_SalaryCalculatedEvent_ShouldDeliverCorrectData()
     {
-        // Arrange
         var eventBus = new InMemoryEventBus();
         SalaryCalculatedEvent? receivedEvent = null;
         
@@ -114,20 +105,18 @@ public class InMemoryEventBusTests
 
         var employeeId = Guid.NewGuid();
         var testEvent = new SalaryCalculatedEvent(
-            employeeId,        // EmployeeId
-            100000m,           // BaseSalary
-            10000m,            // Bonuses
-            13000m,            // Deductions
-            97000m,            // NetSalary
-            12,                // Month
-            2024,              // Year
-            DateTime.UtcNow    // CreatedAt
+            employeeId,
+            100000m,
+            10000m,
+            13000m,
+            97000m,
+            12,
+            2024,
+            DateTime.UtcNow
         );
 
-        // Act
         await eventBus.PublishAsync(testEvent);
 
-        // Assert
         receivedEvent.Should().NotBeNull();
         receivedEvent!.EmployeeId.Should().Be(employeeId);
         receivedEvent.BaseSalary.Should().Be(100000m);
@@ -137,7 +126,6 @@ public class InMemoryEventBusTests
     [Fact]
     public async Task PublishAsync_DifferentEventTypes_ShouldRouteCorrectly()
     {
-        // Arrange
         var eventBus = new InMemoryEventBus();
         var employeeEventReceived = false;
         var salaryEventReceived = false;
@@ -159,10 +147,8 @@ public class InMemoryEventBusTests
             Guid.NewGuid(), Guid.NewGuid(), DateTime.UtcNow, DateTime.UtcNow
         );
 
-        // Act - only publish employee event
         await eventBus.PublishAsync(employeeEvent);
 
-        // Assert
         employeeEventReceived.Should().BeTrue();
         salaryEventReceived.Should().BeFalse();
     }

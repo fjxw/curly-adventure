@@ -15,7 +15,7 @@ public class SalaryCalculation : BaseEntity
     public decimal NightShiftPay { get; set; }
     public decimal HolidayPay { get; set; }
     public decimal Bonuses { get; set; }
-    public decimal Allowances { get; set; } // Надбавки
+    public decimal Allowances { get; set; }
     
     public decimal GrossSalary { get; set; }
     

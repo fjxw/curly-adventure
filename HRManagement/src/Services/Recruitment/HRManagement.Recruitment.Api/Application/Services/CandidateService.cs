@@ -170,7 +170,6 @@ public class CandidateService : ICandidateService
 
         candidate.Status = CandidateStatus.Hired;
         
-        // Close vacancy
         if (candidate.Vacancy != null)
         {
             candidate.Vacancy.Status = VacancyStatus.Filled;
@@ -179,7 +178,6 @@ public class CandidateService : ICandidateService
 
         await _context.SaveChangesAsync(ct);
 
-        // Publish event to create employee
         await _eventBus.PublishAsync(new CandidateHiredEvent(
             candidate.Id,
             candidate.FirstName,

@@ -146,7 +146,7 @@ public class TrainingService : ITrainingService
         {
             TrainingId = trainingId,
             EmployeeId = employeeId,
-            EmployeeName = "Employee", // In real scenario, would be fetched from Employees service
+            EmployeeName = "Employee",
             Status = ParticipationStatus.Registered,
             RegisteredAt = DateTime.UtcNow
         };

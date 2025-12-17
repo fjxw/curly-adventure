@@ -6,7 +6,7 @@ public class LaborNorm : BaseEntity
 {
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
-    public Guid PositionId { get; set; } // Reference to Employees service
+    public Guid PositionId { get; set; } 
     public string PositionName { get; set; } = string.Empty;
     
     public decimal StandardHoursPerDay { get; set; } = 8;

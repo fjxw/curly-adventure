@@ -70,7 +70,7 @@ public class StaffingService : IStaffingService
             IsActive = true
         };
 
-        // Deactivate other tables
+     
         var activeTables = await _context.StaffingTables.Where(s => s.IsActive).ToListAsync(cancellationToken);
         foreach (var activeTable in activeTables)
         {

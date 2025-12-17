@@ -20,11 +20,9 @@ public static class ServiceExtensions
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
-        // Database
         services.AddDbContext<EmployeesDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
-        // Identity
         services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(options =>
         {
             options.Password.RequireDigit = true;
@@ -36,7 +34,6 @@ public static class ServiceExtensions
         .AddEntityFrameworkStores<EmployeesDbContext>()
         .AddDefaultTokenProviders();
 
-        // JWT Authentication
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

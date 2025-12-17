@@ -55,3 +55,4 @@
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Employees/HRManagement.Employees.Api/bin/Debug/net8.0/RabbitMQ.Client.dll
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Employees/HRManagement.Employees.Api/bin/Debug/net8.0/Npgsql.dll
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Employees/HRManagement.Employees.Api/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Employees/HRManagement.Employees.Api/obj/Debug/net8.0/HRManagement.Employees.Api.sourcelink.json

@@ -19,7 +19,6 @@ public class RecruitmentDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // Vacancy
         modelBuilder.Entity<Vacancy>(entity =>
         {
             entity.ToTable("Vacancies");
@@ -34,7 +33,6 @@ public class RecruitmentDbContext : DbContext
             entity.HasQueryFilter(e => !e.IsDeleted);
         });
 
-        // Candidate
         modelBuilder.Entity<Candidate>(entity =>
         {
             entity.ToTable("Candidates");
@@ -55,7 +53,6 @@ public class RecruitmentDbContext : DbContext
             entity.HasQueryFilter(e => !e.IsDeleted);
         });
 
-        // Interview
         modelBuilder.Entity<Interview>(entity =>
         {
             entity.ToTable("Interviews");
@@ -69,7 +66,6 @@ public class RecruitmentDbContext : DbContext
             entity.HasQueryFilter(e => !e.IsDeleted);
         });
 
-        // Training
         modelBuilder.Entity<Training>(entity =>
         {
             entity.ToTable("Trainings");
@@ -82,7 +78,6 @@ public class RecruitmentDbContext : DbContext
             entity.HasQueryFilter(e => !e.IsDeleted);
         });
 
-        // TrainingParticipant
         modelBuilder.Entity<TrainingParticipant>(entity =>
         {
             entity.ToTable("TrainingParticipants");

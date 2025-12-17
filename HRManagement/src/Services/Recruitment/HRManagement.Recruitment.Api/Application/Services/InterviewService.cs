@@ -89,7 +89,6 @@ public class InterviewService : IInterviewService
         _context.Interviews.Add(interview);
         await _context.SaveChangesAsync(ct);
 
-        // Update candidate status
         candidate.Status = CandidateStatus.Interview;
         await _context.SaveChangesAsync(ct);
 

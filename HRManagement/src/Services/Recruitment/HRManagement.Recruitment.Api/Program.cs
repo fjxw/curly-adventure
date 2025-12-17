@@ -50,8 +50,8 @@ app.UseAuthorization();
 app.MapRecruitmentEndpoints();
 app.MapCandidateFileEndpoints();
 
-app.MapGet("/health", () => Results.Ok(new { Status = "Healthy", Service = "Recruitment" }))
-    .WithTags("Здоровье")
+app.MapGet("/health", () => Results.Ok(new { Статус = "Работает", Сервис = "Рекрутинг" }))
+    .WithTags("Работоспособность сервиса")
     .AllowAnonymous();
 
 using (var scope = app.Services.CreateScope())

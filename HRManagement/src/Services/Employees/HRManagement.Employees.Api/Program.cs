@@ -42,8 +42,8 @@ app.MapSkillEndpoints();
 app.MapPositionHistoryEndpoints();
 app.MapPhotoEndpoints();
 
-app.MapGet("/health", () => Results.Ok(new { Status = "Healthy", Service = "Employees" }))
-    .WithTags("Здоровье")
+app.MapGet("/health", () => Results.Ok(new { Статус = "Работает", Сервис = "Сотрудники" }))
+    .WithTags("Работоспособность сервиса")
     .AllowAnonymous();
 
 using (var scope = app.Services.CreateScope())

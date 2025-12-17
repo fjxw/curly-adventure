@@ -121,3 +121,4 @@
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Recruitment/HRManagement.Recruitment.Api/bin/Debug/net8.0/RabbitMQ.Client.dll
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Recruitment/HRManagement.Recruitment.Api/bin/Debug/net8.0/Npgsql.dll
 /workspaces/dotnet-codespaces/HRManagement/src/Services/Recruitment/HRManagement.Recruitment.Api/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Services/Recruitment/HRManagement.Recruitment.Api/obj/Debug/net8.0/HRManagement.Recruitment.Api.sourcelink.json

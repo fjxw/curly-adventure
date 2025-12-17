@@ -4,7 +4,7 @@ namespace HRManagement.Payroll.Api.Domain.Entities;
 
 public class TimeSheet : BaseEntity
 {
-    public Guid EmployeeId { get; set; } // Reference to Employees service
+    public Guid EmployeeId { get; set; }
     public string EmployeeName { get; set; } = string.Empty;
     
     public int Month { get; set; }

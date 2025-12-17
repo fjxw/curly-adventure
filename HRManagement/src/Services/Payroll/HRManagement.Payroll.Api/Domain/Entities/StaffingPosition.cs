@@ -7,13 +7,13 @@ public class StaffingPosition : BaseEntity
     public Guid StaffingTableId { get; set; }
     public StaffingTable StaffingTable { get; set; } = null!;
     
-    public Guid DepartmentId { get; set; } // Reference to Employees service
-    public Guid PositionId { get; set; } // Reference to Employees service
+    public Guid DepartmentId { get; set; }
+    public Guid PositionId { get; set; }
     
     public string PositionName { get; set; } = string.Empty;
     public string DepartmentName { get; set; } = string.Empty;
     
-    public int HeadCount { get; set; } // Количество штатных единиц
-    public int OccupiedCount { get; set; } // Занято
+    public int HeadCount { get; set; }
+    public int OccupiedCount { get; set; }
     public decimal Salary { get; set; }
 }

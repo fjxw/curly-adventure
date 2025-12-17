@@ -10,3 +10,4 @@
 /workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/refint/HRManagement.Shared.MessageBus.dll
 /workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/HRManagement.Shared.MessageBus.pdb
 /workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/ref/HRManagement.Shared.MessageBus.dll
+/workspaces/dotnet-codespaces/HRManagement/src/Shared/HRManagement.Shared.MessageBus/HRManagement.Shared.MessageBus/obj/Debug/net8.0/HRManagement.Shared.MessageBus.sourcelink.json

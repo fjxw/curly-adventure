@@ -25,10 +25,9 @@ public class SalaryService : ISalaryService
     private readonly IEventBus _eventBus;
     private readonly ICacheService _cacheService;
 
-    // Tax rates (simplified)
-    private const decimal IncomeTaxRate = 0.13m; // 13%
-    private const decimal SocialTaxRate = 0.30m; // 30%
-    private const decimal PensionRate = 0.06m; // 6%
+    private const decimal IncomeTaxRate = 0.13m;
+    private const decimal SocialTaxRate = 0.30m;
+    private const decimal PensionRate = 0.06m;
 
     public SalaryService(PayrollDbContext context, IEventBus eventBus, ICacheService cacheService)
     {
@@ -74,7 +73,6 @@ public class SalaryService : ISalaryService
         await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
         try
         {
-            // Check if calculation already exists
             var existing = await _context.SalaryCalculations
                 .FirstOrDefaultAsync(s => s.EmployeeId == request.EmployeeId 
                     && s.Month == request.Month 
@@ -83,13 +81,11 @@ public class SalaryService : ISalaryService
             if (existing != null && existing.Status == SalaryStatus.Paid)
                 return ApiResponse<SalaryCalculationDto>.FailureResponse("Зарплата за этот период уже выплачена");
 
-            // Get timesheet for the period
             var timeSheet = await _context.TimeSheets
                 .FirstOrDefaultAsync(t => t.EmployeeId == request.EmployeeId 
                     && t.Month == request.Month 
                     && t.Year == request.Year, cancellationToken);
 
-            // Get labor norm for calculations
             var laborNorm = await _context.LaborNorms
                 .FirstOrDefaultAsync(cancellationToken);
 
@@ -107,11 +103,10 @@ public class SalaryService : ISalaryService
 
             decimal grossSalary = request.BaseSalary + overtimePay + nightShiftPay + holidayPay + request.Bonuses + request.Allowances;
 
-            // Calculate deductions
             decimal incomeTax = grossSalary * IncomeTaxRate;
             decimal socialTax = grossSalary * SocialTaxRate;
             decimal pensionContribution = grossSalary * PensionRate;
-            decimal totalDeductions = incomeTax + pensionContribution; // Social tax paid by employer
+            decimal totalDeductions = incomeTax + pensionContribution;
             decimal netSalary = grossSalary - totalDeductions;
 
             SalaryCalculation calculation;
@@ -199,7 +194,6 @@ public class SalaryService : ISalaryService
         calculation.PaidAt = DateTime.UtcNow;
         await _context.SaveChangesAsync(cancellationToken);
 
-        // Publish event
         await _eventBus.PublishAsync(new SalaryCalculatedEvent(
             calculation.EmployeeId,
             calculation.BaseSalary,

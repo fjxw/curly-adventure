@@ -25,8 +25,8 @@ app.MapSalaryEndpoints();
 app.MapStaffingEndpoints();
 app.MapTimeSheetEndpoints();
 
-app.MapGet("/health", () => Results.Ok(new { Status = "Healthy", Service = "Payroll" }))
-    .WithTags("Здоровье")
+app.MapGet("/health", () => Results.Ok(new { Статус = "Работает", Сервис = "Зарплата" }))
+    .WithTags("Работоспособность сервиса")
     .AllowAnonymous();
 
 using (var scope = app.Services.CreateScope())

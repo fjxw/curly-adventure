@@ -456,3 +456,4 @@
 /workspaces/dotnet-codespaces/HRManagement/tests/HRManagement.Tests/bin/Debug/net8.0/RabbitMQ.Client.dll
 /workspaces/dotnet-codespaces/HRManagement/tests/HRManagement.Tests/bin/Debug/net8.0/Npgsql.dll
 /workspaces/dotnet-codespaces/HRManagement/tests/HRManagement.Tests/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/workspaces/dotnet-codespaces/HRManagement/tests/HRManagement.Tests/obj/Debug/net8.0/HRManagement.Tests.sourcelink.json

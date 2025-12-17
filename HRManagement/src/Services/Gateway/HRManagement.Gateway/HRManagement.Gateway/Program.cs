@@ -46,8 +46,8 @@ app.UseSwaggerUI(c =>
 
 app.UseCors("AllowAll");
 
-app.MapGet("/health", () => Results.Ok(new { Status = "Healthy", Service = "Gateway" }))
-    .WithTags("Здоровье");
+app.MapGet("/health", () => Results.Ok(new { Статус = "Работает", Сервис = "Шлюз" }))
+    .WithTags("Работоспособность сервиса");
 
 app.MapGet("/api-docs/{service}/swagger.json", async (string service, IHttpClientFactory httpClientFactory, IConfiguration config) =>
 {

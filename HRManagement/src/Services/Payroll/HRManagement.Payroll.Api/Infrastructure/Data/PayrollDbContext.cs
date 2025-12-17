@@ -19,7 +19,7 @@ public class PayrollDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // StaffingTable
+        
         modelBuilder.Entity<StaffingTable>(entity =>
         {
             entity.ToTable("StaffingTables");
@@ -28,7 +28,7 @@ public class PayrollDbContext : DbContext
             entity.HasQueryFilter(e => !e.IsDeleted);
         });
 
-        // StaffingPosition
+       
         modelBuilder.Entity<StaffingPosition>(entity =>
         {
             entity.ToTable("StaffingPositions");
@@ -43,7 +43,7 @@ public class PayrollDbContext : DbContext
             entity.HasQueryFilter(e => !e.IsDeleted);
         });
 
-        // LaborNorm
+        
         modelBuilder.Entity<LaborNorm>(entity =>
         {
             entity.ToTable("LaborNorms");
@@ -59,7 +59,7 @@ public class PayrollDbContext : DbContext
             entity.HasQueryFilter(e => !e.IsDeleted);
         });
 
-        // TimeSheet
+        
         modelBuilder.Entity<TimeSheet>(entity =>
         {
             entity.ToTable("TimeSheets");
@@ -75,7 +75,7 @@ public class PayrollDbContext : DbContext
             entity.HasQueryFilter(e => !e.IsDeleted);
         });
 
-        // SalaryCalculation
+    
         modelBuilder.Entity<SalaryCalculation>(entity =>
         {
             entity.ToTable("SalaryCalculations");

@@ -3,10 +3,6 @@ using System.Text.Json;
 
 namespace HRManagement.Shared.MessageBus;
 
-/// <summary>
-/// In-memory event bus implementation for demonstration purposes.
-/// In production, replace with RabbitMQ, Azure Service Bus, or similar.
-/// </summary>
 public class InMemoryEventBus : IEventBus
 {
     private readonly ConcurrentDictionary<string, List<Func<string, Task>>> _handlers = new();

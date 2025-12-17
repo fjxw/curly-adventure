@@ -131,7 +131,6 @@ public class EmployeeService : IEmployeeService
             await _employeeRepository.AddAsync(employee, cancellationToken);
             await transaction.CommitAsync(cancellationToken);
 
-            // Publish event
             await _eventBus.PublishAsync(new EmployeeCreatedEvent(
                 employee.Id,
                 employee.FirstName,

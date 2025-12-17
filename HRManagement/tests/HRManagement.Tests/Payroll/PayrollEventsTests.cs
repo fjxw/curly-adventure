@@ -8,14 +8,12 @@ public class PayrollEventsTests
     [Fact]
     public void SalaryCalculatedEvent_ShouldHaveAllProperties()
     {
-        // Arrange
         var employeeId = Guid.NewGuid();
         var baseSalary = 100000m;
         var bonuses = 10000m;
-        var deductions = 14300m; // ~13% tax
+        var deductions = 14300m;
         var netSalary = baseSalary + bonuses - deductions;
 
-        // Act
         var evt = new SalaryCalculatedEvent(
             employeeId,
             baseSalary,
@@ -27,7 +25,6 @@ public class PayrollEventsTests
             DateTime.UtcNow
         );
 
-        // Assert
         evt.EmployeeId.Should().Be(employeeId);
         evt.BaseSalary.Should().Be(100000m);
         evt.Bonuses.Should().Be(10000m);
@@ -40,15 +37,13 @@ public class PayrollEventsTests
     [Fact]
     public void SalaryCalculatedEvent_WithZeroBonuses_ShouldCalculateCorrectly()
     {
-        // Arrange
         var baseSalary = 80000m;
         var deductions = 10400m;
 
-        // Act
         var evt = new SalaryCalculatedEvent(
             Guid.NewGuid(),
             baseSalary,
-            0m,             // No bonuses
+            0m,
             deductions,
             baseSalary - deductions,
             1,
@@ -56,7 +51,6 @@ public class PayrollEventsTests
             DateTime.UtcNow
         );
 
-        // Assert
         evt.Bonuses.Should().Be(0);
         evt.NetSalary.Should().Be(69600m);
     }
@@ -64,7 +58,6 @@ public class PayrollEventsTests
     [Fact]
     public void SalaryCalculatedEvent_DifferentMonths_ShouldHaveDifferentValues()
     {
-        // Arrange
         var employeeId = Guid.NewGuid();
 
         var januaryPayroll = new SalaryCalculatedEvent(
@@ -89,7 +82,6 @@ public class PayrollEventsTests
             DateTime.UtcNow
         );
 
-        // Assert
         januaryPayroll.Month.Should().Be(1);
         februaryPayroll.Month.Should().Be(2);
         januaryPayroll.BaseSalary.Should().BeLessThan(februaryPayroll.BaseSalary);
@@ -99,7 +91,6 @@ public class PayrollEventsTests
     [Fact]
     public void SalaryCalculatedEvent_RecordEquality_ShouldWork()
     {
-        // Arrange
         var employeeId = Guid.NewGuid();
         var createdAt = new DateTime(2024, 12, 25);
 
@@ -111,7 +102,6 @@ public class PayrollEventsTests
             employeeId, 100000m, 10000m, 14300m, 95700m, 12, 2024, createdAt
         );
 
-        // Assert
         event1.Should().Be(event2);
     }
 }

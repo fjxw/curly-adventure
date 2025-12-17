@@ -14,11 +14,9 @@ public static class ServiceExtensions
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
-        // Database
         services.AddDbContext<PayrollDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
-        // JWT Authentication
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -40,16 +38,13 @@ public static class ServiceExtensions
 
         services.AddAuthorization();
 
-        // Services
         services.AddScoped<ISalaryService, SalaryService>();
         services.AddScoped<IStaffingService, StaffingService>();
         services.AddScoped<ITimeSheetService, TimeSheetService>();
 
-        // Caching
         services.AddMemoryCache();
         services.AddSingleton<ICacheService, MemoryCacheService>();
 
-        // Message Bus (RabbitMQ)
         services.AddRabbitMqEventBus(configuration);
 
         return services;
